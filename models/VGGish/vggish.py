@@ -141,9 +141,9 @@ def _vgg():
 
 
 class VGGish(VGG):
-    def __init__(self, urls, device=None, pretrained=True, preprocess=True, postprocess=True, progress=True):
+    def __init__(self, urls=None, device=None, pretrained=True, preprocess=True, postprocess=True, progress=True):
         super().__init__(make_layers())
-        if pretrained:
+        if pretrained and urls:
             state_dict = torch.load(urls['VGGish'])
             super().load_state_dict(state_dict)
 
